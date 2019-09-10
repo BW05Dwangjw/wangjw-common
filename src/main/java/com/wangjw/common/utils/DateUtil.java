@@ -130,7 +130,7 @@ public class DateUtil {
 	 * 
 	 *  根据传入的日期获取年龄
 	 */
-	public int getAge(Date birthday) {
+	public static int getAge(Date birthday) {
 		
 		Calendar instance = Calendar.getInstance();
 		instance.setTime(birthday);
