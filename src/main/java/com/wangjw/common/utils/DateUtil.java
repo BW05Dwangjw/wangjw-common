@@ -16,9 +16,47 @@ public class DateUtil {
 	 * 
 	 * @param futureDate
 	 * @return
-	 */
+	 * 求未来日期离今天还剩的天数
+	 *//*
 	public int getRemainDays(Date futureDate) {
 		return (int)(futureDate.getTime()-new Date().getTime())/1000/3600/24;	
+	}*/
+	
+	
+	
+	/***
+	 * 求未来日期离今天还剩的天数
+	 */
+	
+	public static int getDaysByFuture (Date future) {
+		//未来日期的毫秒数
+		long end = future.getTime();
+		//当前日期的毫秒数
+		long now = new Date().getTime();
+		
+		if(now > end)
+			throw new RuntimeException("传入的日期不是为未来日期");
+		//向上取整
+		  return  (int) (Math.ceil((end - now ) /1000 /24/60/60.0)) ;
+		
+	}
+	
+	
+	/**
+	 * 
+	 * 求过去日期离今天过去的天数
+	 */
+	public static int getDaysByDeparted (Date departed) {
+		
+		//未来日期的毫秒数
+				long last = departed.getTime();
+				//当前日期的毫秒数
+				long now = new Date().getTime();
+				
+				if(now < last)
+					throw new RuntimeException("传入的日期不是为过去日期");
+				//向上取整
+				  return  (int) (Math.ceil((now -last ) /1000 /24/60/60.0)) ;
 	}
 	
 	/**
@@ -89,6 +127,8 @@ public class DateUtil {
 	 * 
 	 * @param birthday
 	 * @return
+	 * 
+	 *  根据传入的日期获取年龄
 	 */
 	public int getAge(Date birthday) {
 		
